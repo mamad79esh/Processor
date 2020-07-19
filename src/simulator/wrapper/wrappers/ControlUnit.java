@@ -33,6 +33,7 @@ public class ControlUnit extends Wrapper {
         And lw = new And("Lw-AND",op0,op1,not2.getOutput(0),not3.getOutput(0),not4.getOutput(0),op5);
         And sw = new And("R-format-AND",op0,op1,not2.getOutput(0),op3,not4.getOutput(0),op5);
         And beq = new And("R-format-AND",not0.getOutput(0),not1.getOutput(0),op2,not3.getOutput(0),not4.getOutput(0),not5.getOutput(0));
+        And j = new And("Jump-AND",not0.getOutput(0),op1,not2.getOutput(0),not3.getOutput(0),not4.getOutput(0),not5.getOutput(0));
 
         Or aluSrc = new Or("Or1",lw.getOutput(0),sw.getOutput(0));
         Or regWrite = new Or("Or1",lw.getOutput(0),R_format.getOutput(0));
@@ -44,8 +45,10 @@ public class ControlUnit extends Wrapper {
         addOutput(lw.getOutput(0));//               MemRead
         addOutput(sw.getOutput(0));//               MemWrite
         addOutput(beq.getOutput(0));//              Branch
-        addOutput(R_format.getOutput(0));//   ALUOp1
+        addOutput(j.getOutput(0));//                Jump
+        addOutput(R_format.getOutput(0));//         ALUOp1
         addOutput(beq.getOutput(0));//              ALUOp2
+
     }
 
 }

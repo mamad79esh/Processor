@@ -16,12 +16,12 @@ public class ControlUnit extends Wrapper {
     public void initialize() {
 
         Link op0,op1,op2,op3,op4,op5;
-        op0 = getInput(0);
-        op1 = getInput(1);
-        op2 = getInput(2);
-        op3 = getInput(3);
-        op4 = getInput(4);
-        op5 = getInput(5);
+        op0 = getInput(5);
+        op1 = getInput(4);
+        op2 = getInput(3);
+        op3 = getInput(2);
+        op4 = getInput(1);
+        op5 = getInput(0);
         Not not0 = new Not("Not0" , op0);
         Not not1 = new Not("Not1" , op1);
         Not not2 = new Not("Not2" , op2);

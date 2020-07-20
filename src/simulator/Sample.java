@@ -44,7 +44,7 @@ public class Sample {
         }
 
 
-
+        System.out.println("Hello");
         RegisterFile r = new RegisterFile("RegFile","0x0",Registers);
 
         Simulator.debugger.addTrackItem(r);

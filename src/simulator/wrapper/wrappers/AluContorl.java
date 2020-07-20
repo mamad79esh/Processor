@@ -11,7 +11,9 @@ public class AluContorl extends Wrapper {
     public AluContorl(String label, String stream, Link... links) {
         super(label, stream, links);
     }
-
+    //Input and output is a link...
+    //Se consideran 8 bits de entrada, los primeros dos bits ALUOp   6 bits son funciones
+    //outputs is 4 bits
     @Override
     public void initialize() {
         And CLwSw =new And("lwsw");

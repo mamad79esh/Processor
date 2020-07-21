@@ -4,11 +4,8 @@ package simulator;
 
 import simulator.control.Simulator;
 import simulator.gates.sequential.Clock;
-import simulator.gates.sequential.flipflops.DFlipFlop;
 import simulator.network.Link;
 import simulator.wrapper.wrappers.*;
-
-import java.util.ArrayList;
 
 public class Sample {
     public static void main(String[] args) {
@@ -38,7 +35,7 @@ public class Sample {
         Clock clock = new Clock("Clock",1000);
         Link write = Simulator.trueLogic;
         Link []regWrite = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
-        Link []regRead1 = {Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
+        Link []regRead1 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic};
         Link []regRead2 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
         Link []regDataWrite = {Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
                                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,
@@ -61,7 +58,7 @@ public class Sample {
 
         Simulator.debugger.addTrackItem(clock,r);
         Simulator.debugger.setDelay(1000);
-        Simulator.circuit.startCircuit("real");
+        Simulator.circuit.startCircuit();
     }
 }
 

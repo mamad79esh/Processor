@@ -5,7 +5,7 @@ import simulator.gates.combinational.And;
 import simulator.gates.combinational.Not;
 import simulator.gates.combinational.Or;
 import simulator.gates.sequential.Clock;
-import simulator.gates.sequential.flipflops.DFlipFlop;
+
 import simulator.network.Link;
 import simulator.wrapper.Wrapper;
 
@@ -34,14 +34,14 @@ public class RegisterFile extends Wrapper {
 
         ArrayList<DFlipFlop> d0 = new ArrayList<>();
         for (int i = 0 ; i < 32 ; i++){
-            d0.add(new DFlipFlop("D0_0", clk,Simulator.falseLogic));
+            d0.add(new DFlipFlop("D0_0", "2x2",clk,Simulator.falseLogic));
         }
         Registers.add(d0);
 
         for (int i = 1 ; i < 32 ; i++){
             ArrayList<DFlipFlop> d = new ArrayList<>();
             for (int j = 0 ; j < 32 ; j++){
-                DFlipFlop flipFlop = new DFlipFlop(String.format("D%d_%d",i,j), clk);
+                DFlipFlop flipFlop = new DFlipFlop(String.format("D%d_%d",i,j),"2x2", clk);
                 And select = new And("And",write,decoder0.getOutput(i));
                 Multiplexer2x1 mux = new Multiplexer2x1("MUX_2x1","3x1",select.getOutput(0),flipFlop.getOutput(0),getInput(j+17));
                 flipFlop.addInput(mux.getOutput(0));

@@ -11,7 +11,7 @@ import simulator.wrapper.Wrapper;
 
 public class PC_update extends Wrapper {
 
-	public PC_update(String label, String stream, Link[] links) {
+	public PC_update(String label, String stream, Link...links) {
 		super(label, stream, links);
 	}
 

@@ -9,6 +9,8 @@ public class RealDFlipFlop extends Wrapper {
         super(label, stream, links);
     }
 
+
+
     @Override
     public void initialize() {
         Nand n1 = new Nand("NAND1");

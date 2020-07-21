@@ -1,0 +1,140 @@
+[33mcommit 9a49e353b5505980f8ecbda2f9031d9f3f83b14d[m[33m ([m[1;36mHEAD -> [m[1;32mSm_mE[m[33m)[m
+Merge: 718baaa 8dff27f
+Author: Sm_mE <mohammad79eshrati@gmail.com>
+Date:   Mon Jul 20 17:34:49 2020 +0430
+
+    Merge branch 'Rayan_Hd' of https://github.com/mamad79esh/Processor into Sm_mE
+
+[33mcommit 8dff27f1165d8f3399d8a596771ee65146c542b0[m[33m ([m[1;31morigin/Rayan_Hd[m[33m)[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Mon Jul 20 17:00:45 2020 +0430
+
+    Add files via upload
+
+[33mcommit 3cb22b693b8ac56dfff133777e9fab0db8a95614[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Mon Jul 20 17:00:09 2020 +0430
+
+    Delete Sample.java
+
+[33mcommit aeb0061609d7430a2c663d7dd2582a1827e9debf[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Mon Jul 20 11:27:07 2020 +0430
+
+    Add files via upload
+
+[33mcommit 718baaad53bfe69a7ad9faa89b11a2b22381d6e1[m[33m ([m[1;31morigin/Sm_mE[m[33m)[m
+Author: Sm_mE <mohammad79eshrati@gmail.com>
+Date:   Mon Jul 20 11:26:49 2020 +0430
+
+    test
+
+[33mcommit 0bf9169a3d9df9d89317cfb932966373001935ef[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Mon Jul 20 11:26:44 2020 +0430
+
+    Delete Twos_complement.java
+
+[33mcommit 00786d2291a7a71b8080a266a4a5407e743e0574[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Mon Jul 20 11:16:28 2020 +0430
+
+    Delete Sample.java
+
+[33mcommit ef193e8eea0595a78469bb793f11be8a70ed5237[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Mon Jul 20 11:15:54 2020 +0430
+
+    Delete Twos_complement.java
+
+[33mcommit 1fc4b67669424f4088396e453d3031fd8a2ea254[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Mon Jul 20 11:04:58 2020 +0430
+
+    Add files via upload
+
+[33mcommit 800af68326300c7c5ea4a5ca6fc6c5d0057fcd92[m
+Author: Sm_mE <mohammad79eshrati@gmail.com>
+Date:   Sun Jul 19 17:47:16 2020 +0430
+
+    Add jump to Decoders and RegisterFile
+
+[33mcommit 540a989d4051ff1161ce646c3fd1c7136a8fb2e0[m
+Author: Sm_mE <mohammad79eshrati@gmail.com>
+Date:   Sun Jul 19 12:43:24 2020 +0430
+
+    Add jump to control unit
+
+[33mcommit f46b288e102f31464e0ae795507bdcc11cbc9c66[m
+Author: Sm_mE <mohammad79eshrati@gmail.com>
+Date:   Sun Jul 19 12:10:51 2020 +0430
+
+    Add Control unit sample
+
+[33mcommit 416c7203cb7b93621f7efc2d194f786c85e49ac4[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Sun Jul 19 11:41:42 2020 +0430
+
+    Add files via upload
+
+[33mcommit 36340ba75044aa4beb90323fb0c830726c8d9b2f[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Sun Jul 19 11:41:17 2020 +0430
+
+    Delete Sample.java
+
+[33mcommit ec757de0bf541735ebffcd396e37c3f5bb456296[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Sun Jul 19 11:40:32 2020 +0430
+
+    Add files via upload
+
+[33mcommit e7e081e176385975237fd3f191c5378e8ce82024[m
+Author: Sm_mE <mohammad79eshrati@gmail.com>
+Date:   Sun Jul 19 10:53:50 2020 +0430
+
+    Add Control Unit
+
+[33mcommit 41ef04e0936e4c99b83242293b1f5da6d152c90d[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Sun Jul 19 09:44:54 2020 +0430
+
+    Add files via upload
+
+[33mcommit 0494787722122d87aaf65ffa220e83d21a77cbdd[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Sun Jul 19 09:44:29 2020 +0430
+
+    Add files via upload
+
+[33mcommit 924ee7a45d0b932aad1f557700b4bae5f8d7b01f[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Sun Jul 19 09:43:27 2020 +0430
+
+    Delete SignExtend.java
+
+[33mcommit 55679ee7030116da12ca292a2236fc49269fa7b2[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Sun Jul 19 09:43:15 2020 +0430
+
+    Delete Sample.java
+
+[33mcommit e7e76fdf7990e4a9bb3fdd4dbc96e487e8e859e6[m
+Author: Sm_mE <mohammad79eshrati@gmail.com>
+Date:   Sun Jul 19 09:40:47 2020 +0430
+
+    Add multiplexers
+
+[33mcommit 54e6b64dfff3a45c259a54ad81f63f21b3b2bde0[m
+Author: RayanHdd <68460959+RayanHdd@users.noreply.github.com>
+Date:   Sat Jul 18 22:40:11 2020 +0430
+
+    Add files via upload
+    
+    signExtend(not working yet!)
+
+[33mcommit 39d36f21b6cce6072b9c807eeb017abc5ce755cd[m
+Author: Sm_mE <mohammad79eshrati@gmail.com>
+Date:   Sat Jul 18 16:53:37 2020 +0430
+
+    start commit

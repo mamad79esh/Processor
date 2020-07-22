@@ -3,6 +3,7 @@
 package simulator;
 
 import simulator.control.Simulator;
+import simulator.gates.combinational.Memory;
 import simulator.gates.sequential.Clock;
 import simulator.network.Link;
 import simulator.wrapper.wrappers.*;
@@ -28,15 +29,15 @@ public class Sample {
 
 //        Decoder5X32 d1 = new Decoder5X32("Dec_1","5X32",Simulator.trueLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic);
 
-
-
-        RegisterFile r = new RegisterFile("RegFile","49x64");
-
-        Clock clock = new Clock("Clock",1000);
-        Link write = Simulator.trueLogic;
-        Link []regWrite = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
-        Link []regRead1 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic};
-        Link []regRead2 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
+//
+//
+//        RegisterFile r = new RegisterFile("RegFile","49x64");
+//
+//        Clock clock = new Clock("Clock",1000);
+//        Link write = Simulator.trueLogic;
+//        Link []regWrite = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
+//        Link []regRead1 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic};
+//        Link []regRead2 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
         Link []regDataWrite = {Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
                                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,
                                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
@@ -44,20 +45,41 @@ public class Sample {
                                 Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,
                                 Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic
                                 ,Simulator.trueLogic,Simulator.falseLogic};
-
-        r.addInput(clock.getOutput(0));
-            r.addInput(write);
-                    r.addInput(regWrite);
-                            r.addInput(regRead1);
-                                r.addInput(regRead2);
-                                    r.addInput(regDataWrite);
+//
+//        r.addInput(clock.getOutput(0));
+//            r.addInput(write);
+//                    r.addInput(regWrite);
+//                            r.addInput(regRead1);
+//                                r.addInput(regRead2);
+//                                    r.addInput(regDataWrite);
 
 //    Multiplexer32x1 m = new Multiplexer32x1("MUX_32x1","37x1",Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic);
 //
 //    m.addInput(regDataWrite);
+        Clock c = new Clock("clk",1000);
+        DFlipFlop d = new DFlipFlop("DFlipFlop","2x2",c.getOutput(0));
+        d.addInput(d.getOutput(1));
+        Memory m = new Memory("mem",d.getOutput(0));
+        m.addInput(Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
+                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,
+                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
+                Simulator.falseLogic);
 
-        Simulator.debugger.addTrackItem(clock,r);
-        Simulator.debugger.setDelay(1000);
+        Link []regDataWrite2 = {c.getOutput(0),c.getOutput(0),c.getOutput(0),Simulator.falseLogic,Simulator.falseLogic,
+                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,
+                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
+                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
+                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,
+                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic
+                ,Simulator.trueLogic,Simulator.falseLogic};
+
+
+
+        m.addInput(regDataWrite2);
+
+
+        Simulator.debugger.addTrackItem(m,c);
+        Simulator.debugger.setDelay(500);
         Simulator.circuit.startCircuit();
     }
 }

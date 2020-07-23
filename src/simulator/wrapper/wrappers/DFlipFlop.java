@@ -4,8 +4,8 @@ import simulator.gates.combinational.Nand;
 import simulator.network.Link;
 import simulator.wrapper.Wrapper;
 
-public class RealDFlipFlop extends Wrapper {
-    public RealDFlipFlop(String label, String stream, Link... links) {
+public class DFlipFlop extends Wrapper {
+    public DFlipFlop(String label, String stream, Link... links) {
         super(label, stream, links);
     }
 

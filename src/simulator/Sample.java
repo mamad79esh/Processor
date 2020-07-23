@@ -22,8 +22,10 @@ public class Sample {
 
         }
         Twos_complement te1 = new Twos_complement("tr","32X32",inp);
+        AluContorl te2 =new AluContorl("alu","8X4",Simulator.trueLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic,
+                Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic);
 
-        Simulator.debugger.addTrackItem(te);
+        Simulator.debugger.addTrackItem(te2);
         Simulator.debugger.setDelay(2000);
         Simulator.circuit.startCircuit();
     }

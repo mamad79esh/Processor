@@ -65,8 +65,12 @@ public class Processor {
 
         //--------------------------------------------------------------------------------------------------------------
         // Connecting instruction memory
-        for(int i = 0 ; i < 32 ; i++)// add address to fetch instruction
+        instructionMemory.addInput(Simulator.falseLogic);
+        for(int i = 16 ; i < 32 ; i++)// add address to fetch instruction
             instructionMemory.addInput(pcUpdate.getOutput(i));
+
+        for(int i = 16 ; i < 32 ; i++)// add don't care data
+            instructionMemory.addInput(Simulator.falseLogic);
 
         //--------------------------------------------------------------------------------------------------------------
         // Connecting register file input

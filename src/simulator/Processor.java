@@ -3,6 +3,7 @@
 package simulator;
 
 import simulator.control.Simulator;
+import simulator.gates.combinational.ByteMemory;
 import simulator.gates.combinational.Memory;
 import simulator.gates.sequential.Clock;
 import simulator.network.Link;
@@ -17,7 +18,7 @@ public class Processor {
 
         PCUpdate pcUpdate = new PCUpdate("PCUpdate","78x32");
 
-        Memory instructionMemory = new Memory("InstructionMemory");
+        ByteMemory instructionMemory = new ByteMemory("InstructionMemory");
 
         Multiplexer2x1 []registerFileInput = new Multiplexer2x1[5];
         for (int i = 0 ; i < 5 ; i++)
@@ -37,7 +38,7 @@ public class Processor {
 
         ALU alu = new ALU("ALU","68X33");
 
-        Memory dataMemory = new Memory("DataMemory");
+        ByteMemory dataMemory = new ByteMemory("DataMemory");
 
         Multiplexer2x1 []writeRegisterData = new Multiplexer2x1[32];
         for (int i = 0 ; i < 32 ; i++)

@@ -114,6 +114,7 @@ public class Processor {
         //--------------------------------------------------------------------------------------------------------------
         // Connecting alu second input mux
         for (int i = 0 ; i < 32 ; i++){// add alu input
+            aluInput[i].addInput(controlUnit.getOutput(1));// selector(AluSrc)
             aluInput[i].addInput(registerFile.getOutput(32+i),immediate.getOutput(i));// from register or immediate
         }
 
@@ -141,11 +142,13 @@ public class Processor {
         }
 
         //--------------------------------------------------------------------------------------------------------------
+        // Connecting write back mux
+        for (int i = 0 ; i < 32 ; i++) {
+            writeRegisterData[i].addInput(controlUnit.getOutput(2));// selector(MemToReg)
+            writeRegisterData[i].addInput(alu.getOutput(i), dataMemory.getOutput(i)); // inputs
+        }
 
-
-
-
-
+        //--------------------------------------------------------------------------------------------------------------
 
 
 

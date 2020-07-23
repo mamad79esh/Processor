@@ -12,7 +12,6 @@ import simulator.wrapper.wrappers.*;
 public class Processor {
     public static void main(String[] args) {
        // Creating needed wrapper :
-        Link[] startAddress = new Link[32];
 
         Clock clock = new Clock("Clock",1000);
 
@@ -44,6 +43,20 @@ public class Processor {
         for (int i = 0 ; i < 32 ; i++)
              writeRegisterData[i] = new Multiplexer2x1("WriteRegisterData_"+i,"3X1");
 
+
+
+        //--------------------------------------------------------------------------------------------------------------
+        // Pushing instructions to instruction memory
+        Link []startAddress = new Link[32];
+        for( int i = 0 ; i < 32 ; i++)
+            startAddress[i] = Simulator.falseLogic;
+
+        Boolean [][]instrucions = new Boolean[32][32];
+        // add instructions here
+
+
+
+        instructionMemory.setMemory(instrucions);
         // end of creation
         //--------------------------------------------------------------------------------------------------------------
         // Connecting gates and wrappers together
@@ -157,7 +170,7 @@ public class Processor {
 
 
 
-        Simulator.debugger.addTrackItem();
+        Simulator.debugger.addTrackItem(clock,dataMemory,registerFile);
         Simulator.debugger.setDelay(2000);
         Simulator.circuit.startCircuit();
     }

@@ -11,7 +11,7 @@ import simulator.wrapper.wrappers.*;
 
 public class Processor {
     public static void main(String[] args) {
-       // Creating needed wrapper :
+        // Creating needed wrapper :
 
         Clock clock = new Clock("Clock",1000);
 
@@ -41,7 +41,7 @@ public class Processor {
 
         Multiplexer2x1 []writeRegisterData = new Multiplexer2x1[32];
         for (int i = 0 ; i < 32 ; i++)
-             writeRegisterData[i] = new Multiplexer2x1("WriteRegisterData_"+i,"3X1");
+            writeRegisterData[i] = new Multiplexer2x1("WriteRegisterData_"+i,"3X1");
 
 
 
@@ -51,8 +51,25 @@ public class Processor {
         for( int i = 0 ; i < 32 ; i++)
             startAddress[i] = Simulator.falseLogic;
 
-        Boolean [][]instrucions = new Boolean[32][32];
+        Boolean [][]instrucions = new Boolean[65536][8];
         // add instructions here
+
+
+        // lw $t0,0($t1)
+        instrucions[0][0] = true;    instrucions[0][1] = false;
+        instrucions[0][2] = false;    instrucions[0][3] = false;
+        instrucions[0][4] = true;    instrucions[0][5] = true;
+
+        instrucions[0][6] = false;    instrucions[0][7] = true;
+        instrucions[0][8] = false;    instrucions[0][9] = false;
+        instrucions[0][10] = true;
+
+        instrucions[0][11] = false;    instrucions[0][12] = true;
+        instrucions[0][13] = false;    instrucions[0][14] = false;
+        instrucions[0][15] = false;
+
+        for(int i=16 ; i<32 ; i++)
+            instrucions[0][i] = false ;
 
 
 
@@ -112,13 +129,13 @@ public class Processor {
 
         //--------------------------------------------------------------------------------------------------------------
         // Connecting control unit
-        for (int i = 0 ; i < 5 ; i++){// add opcode to control unit
+        for (int i = 0 ; i < 6 ; i++){// add opcode to control unit
             controlUnit.addInput(instructionMemory.getOutput(i));
         }
 
         //--------------------------------------------------------------------------------------------------------------
         // Connecting alu control
-        aluControl.addInput(controlUnit.getOutput(8),clock.getOutput(9));// add aluOp
+        aluControl.addInput(controlUnit.getOutput(8),controlUnit.getOutput(9));// add aluOp
         for (int i = 0 ; i < 6 ; i++) // add funct
             aluControl.addInput(instructionMemory.getOutput(26+i));
 

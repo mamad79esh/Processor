@@ -1,11 +1,11 @@
 Modules:
 1- Alu
-2- Instruction Memory
-3- sign-extend
-4- CU
+2- Instruction Memory| Done!!!
+3- sign-extend | Done!!!
+4- CU| Done!!!
 5- Register file
-6- Alu control
-7- Data memory
+6- Alu control| Done!!!
+7- Data memory| Done!!!
 8- Update PC
-9- Muxt
-10- TWo's complement
+9- Mux | Done!!!
+10- TWo's complement | Done!!!

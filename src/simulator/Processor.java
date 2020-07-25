@@ -79,48 +79,48 @@ public class Processor {
 
         ////////////////////////////////////////////////////////
 
-        instrucions[0][0] = true;    instrucions[0][1] = false;
-        instrucions[0][2] = true;    instrucions[0][3] = false;
-        instrucions[0][4] = true;    instrucions[0][5] = true;
-        instrucions[0][6] = false;    instrucions[0][7] = true;
+        instrucions[0][0] = false;    instrucions[0][1] = false;
+        instrucions[0][2] = false;    instrucions[0][3] = false;
+        instrucions[0][4] = false;    instrucions[0][5] = false;
+        instrucions[0][6] = false;    instrucions[0][7] = false;
 
-        instrucions[1][0] = false;    instrucions[1][1] = false;
-        instrucions[1][2] = true;     instrucions[1][3] = false;
+        instrucions[1][0] = false;    instrucions[1][1] = true;
+        instrucions[1][2] = false;     instrucions[1][3] = false;
         instrucions[1][4] = true;    instrucions[1][5] = false;
         instrucions[1][6] = false;   instrucions[1][7] = false;
 
         instrucions[2][0] = false;    instrucions[2][1] = false;
-        instrucions[2][2] = false;     instrucions[2][3] = false;
+        instrucions[2][2] = false;     instrucions[2][3] = true;
         instrucions[2][4] = false;    instrucions[2][5] = false;
         instrucions[2][6] = false;   instrucions[2][7] = false;
 
         instrucions[3][0] = false;    instrucions[3][1] = false;
-        instrucions[3][2] = false;     instrucions[3][3] = false;
+        instrucions[3][2] = true;     instrucions[3][3] = false;
         instrucions[3][4] = false;    instrucions[3][5] = false;
-        instrucions[3][6] = false;   instrucions[3][7] = false;
+        instrucions[3][6] = true;   instrucions[3][7] = false;
 
         /////////////////////////////////////////////////////////
 
-
-        instrucions[4][0] = true;     instrucions[4][1] = false;
-        instrucions[4][2] = false;    instrucions[4][3] = false;
-        instrucions[4][4] = true;     instrucions[4][5] = true;
-        instrucions[4][6] = false;    instrucions[4][7] = true;
-
-        instrucions[5][0] = false;    instrucions[5][1] = false;
-        instrucions[5][2] = true;     instrucions[5][3] = false;
-        instrucions[5][4] = true;     instrucions[5][5] = false;
-        instrucions[5][6] = false;    instrucions[5][7] = false;
-
-        instrucions[6][0] = false;    instrucions[6][1] = false;
-        instrucions[6][2] = false;    instrucions[6][3] = false;
-        instrucions[6][4] = false;    instrucions[6][5] = false;
-        instrucions[6][6] = false;    instrucions[6][7] = false;
-
-        instrucions[7][0] = false;    instrucions[7][1] = false;
-        instrucions[7][2] = false;    instrucions[7][3] = false;
-        instrucions[7][4] = false;    instrucions[7][5] = false;
-        instrucions[7][6] = false;    instrucions[7][7] = false;
+//
+//        instrucions[4][0] = true;     instrucions[4][1] = false;
+//        instrucions[4][2] = false;    instrucions[4][3] = false;
+//        instrucions[4][4] = true;     instrucions[4][5] = true;
+//        instrucions[4][6] = false;    instrucions[4][7] = true;
+//
+//        instrucions[5][0] = false;    instrucions[5][1] = false;
+//        instrucions[5][2] = true;     instrucions[5][3] = false;
+//        instrucions[5][4] = true;     instrucions[5][5] = false;
+//        instrucions[5][6] = false;    instrucions[5][7] = false;
+//
+//        instrucions[6][0] = false;    instrucions[6][1] = false;
+//        instrucions[6][2] = false;    instrucions[6][3] = false;
+//        instrucions[6][4] = false;    instrucions[6][5] = false;
+//        instrucions[6][6] = false;    instrucions[6][7] = false;
+//
+//        instrucions[7][0] = false;    instrucions[7][1] = false;
+//        instrucions[7][2] = false;    instrucions[7][3] = false;
+//        instrucions[7][4] = false;    instrucions[7][5] = false;
+//        instrucions[7][6] = false;    instrucions[7][7] = false;
 
 
 
@@ -171,6 +171,10 @@ public class Processor {
 
         for(int i = 16 ; i < 32 ; i++)// add address to fetch instruction
             instructionMemory.addInput(pcUpdate.getOutput(i));
+
+//        for(int i = 0 ; i < 32 ; i++)// add address to fetch instruction
+//            instructionMemory.addInput(Simulator.falseLogic);
+
 
         //--------------------------------------------------------------------------------------------------------------
         // Connecting control unit

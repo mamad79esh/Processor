@@ -41,7 +41,7 @@ public class ALU extends Wrapper {
         CSlt.addInput(nota.getOutput(0),getInput(1),getInput(2),getInput(3));
 
         Adder adder=new Adder("adder","64X33",
-               getInput(4),getInput(5),getInput(6),getInput(7),getInput(8),getInput(9),getInput(10),
+                getInput(4),getInput(5),getInput(6),getInput(7),getInput(8),getInput(9),getInput(10),
                 getInput(11),getInput(12),getInput(13),getInput(14),getInput(15),getInput(16),getInput(17),
                 getInput(18),getInput(19),getInput(20),getInput(21),getInput(22),getInput(23),getInput(24),
                 getInput(25),getInput(26),getInput(27),getInput(28),getInput(29),getInput(30),getInput(31),
@@ -60,7 +60,7 @@ public class ALU extends Wrapper {
             i++;
         }
 
-        Twos_complement tws =new Twos_complement("tws","32X32",inp);
+        TwosComplement tws =new TwosComplement("tws","32X32",inp);
 
         Adder sub =new Adder("sub","64X33",
                 tws.getOutput(0),tws.getOutput(1),tws.getOutput(2),tws.getOutput(3),tws.getOutput(4),tws.getOutput(5),

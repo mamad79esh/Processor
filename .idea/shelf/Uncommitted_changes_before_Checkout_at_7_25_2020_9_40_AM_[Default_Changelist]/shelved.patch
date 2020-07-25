@@ -1,0 +1,64 @@
+Index: src/simulator/Sample.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//Dedicated to Goli\r\n\r\npackage simulator;\r\n\r\nimport simulator.control.Simulator;\r\nimport simulator.gates.combinational.Memory;\r\nimport simulator.gates.sequential.Clock;\r\nimport simulator.network.Link;\r\nimport simulator.wrapper.wrappers.*;\r\n\r\npublic class Sample {\r\n    public static void main(String[] args) {\r\n        //sample circuit\r\n//        Adder adder = new Adder(\"ADDER\", \"10X6\",\r\n//                Simulator.falseLogic, Simulator.trueLogic, Simulator.trueLogic, Simulator.falseLogic, Simulator.trueLogic,\r\n//                Simulator.falseLogic, Simulator.trueLogic, Simulator.falseLogic, Simulator.falseLogic, Simulator.trueLogic);\r\n\r\n//        Multiplexer2x1 m1 = new Multiplexer2x1(\"MUX_2x1\",\"3X1\",Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic);\r\n//        Multiplexer4x1 m1 = new Multiplexer2x1(\"MUX_2x1\",\"6X1\",Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic);\r\n//\r\n//\r\n//        Multiplexer8x1 m1 = new Multiplexer8x1(\"MUX_8x1\",\"11x1\",Simulator.trueLogic,Simulator.falseLogic , Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.trueLogic);\r\n\r\n       // ControlUnit cu = new ControlUnit(\"CU\", \"6X10\",Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.trueLogic); // lw\r\n        // ControlUnit cu = new ControlUnit(\"CU\", \"6X10\",Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic);// R-format\r\n//        ControlUnit cu = new ControlUnit(\"CU\", \"6X10\",Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic);// Jump\r\n\r\n//        Decoder3X8 d0 = new Decoder3X8(\"Dec_0\",\"4X8\",Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.trueLogic);\r\n\r\n//        Decoder5X32 d1 = new Decoder5X32(\"Dec_1\",\"5X32\",Simulator.trueLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic);\r\n\r\n//\r\n//\r\n//        RegisterFile r = new RegisterFile(\"RegFile\",\"49x64\");\r\n//\r\n//        Clock clock = new Clock(\"Clock\",1000);\r\n//        Link write = Simulator.trueLogic;\r\n//        Link []regWrite = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};\r\n//        Link []regRead1 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic};\r\n//        Link []regRead2 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};\r\n        Link []regDataWrite = {Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,\r\n                               Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,\r\n                               Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,\r\n                                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,\r\n                                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,\r\n                                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic\r\n                                ,Simulator.trueLogic,Simulator.falseLogic};\r\n//\r\n//        r.addInput(clock.getOutput(0));\r\n//            r.addInput(write);\r\n//                    r.addInput(regWrite);\r\n//                            r.addInput(regRead1);\r\n//                                r.addInput(regRead2);\r\n//                                    r.addInput(regDataWrite);\r\n\r\n//    Multiplexer32x1 m = new Multiplexer32x1(\"MUX_32x1\",\"37x1\",Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic);\r\n//\r\n//    m.addInput(regDataWrite);\r\n        Clock c = new Clock(\"clk\",1000);\r\n        DFlipFlop d = new DFlipFlop(\"DFlipFlop\",\"2x2\",c.getOutput(0));\r\n        d.addInput(d.getOutput(1));\r\n        Memory m = new Memory(\"mem\",d.getOutput(0));\r\n        m.addInput(Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,\r\n                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,\r\n                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,\r\n                Simulator.falseLogic);\r\n\r\n        Link []regDataWrite2 = {c.getOutput(0),c.getOutput(0),c.getOutput(0),Simulator.falseLogic,Simulator.falseLogic,\r\n                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,\r\n                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,\r\n                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,\r\n                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,\r\n                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic\r\n                ,Simulator.trueLogic,Simulator.falseLogic};\r\n\r\n\r\n\r\n        m.addInput(regDataWrite2);\r\n\r\n\r\n        Simulator.debugger.addTrackItem(m,c);\r\n        Simulator.debugger.setDelay(500);\r\n        Simulator.circuit.startCircuit();\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/simulator/Sample.java	(revision 21049f5bba589c13a5e896d2afbf5bdacae106bd)
++++ src/simulator/Sample.java	(date 1595653754911)
+@@ -29,15 +29,15 @@
+ 
+ //        Decoder5X32 d1 = new Decoder5X32("Dec_1","5X32",Simulator.trueLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic);
+ 
+-//
+-//
+-//        RegisterFile r = new RegisterFile("RegFile","49x64");
+-//
+-//        Clock clock = new Clock("Clock",1000);
+-//        Link write = Simulator.trueLogic;
+-//        Link []regWrite = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
+-//        Link []regRead1 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic};
+-//        Link []regRead2 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
++
++
++        RegisterFile r = new RegisterFile("RegFile","49x64");
++
++        Clock clock = new Clock("Clock",1000);
++        Link write = Simulator.trueLogic;
++        Link []regWrite = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
++        Link []regRead1 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic};
++        Link []regRead2 = {Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic};
+         Link []regDataWrite = {Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
+                                Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,
+                                Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,
+@@ -45,13 +45,13 @@
+                                 Simulator.falseLogic, Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic, Simulator.falseLogic,
+                                 Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.falseLogic
+                                 ,Simulator.trueLogic,Simulator.falseLogic};
+-//
+-//        r.addInput(clock.getOutput(0));
+-//            r.addInput(write);
+-//                    r.addInput(regWrite);
+-//                            r.addInput(regRead1);
+-//                                r.addInput(regRead2);
+-//                                    r.addInput(regDataWrite);
++
++        r.addInput(clock.getOutput(0));
++            r.addInput(write);
++                    r.addInput(regWrite);
++                            r.addInput(regRead1);
++                                r.addInput(regRead2);
++                                    r.addInput(regDataWrite);
+ 
+ //    Multiplexer32x1 m = new Multiplexer32x1("MUX_32x1","37x1",Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic);
+ //
+@@ -78,7 +78,7 @@
+         m.addInput(regDataWrite2);
+ 
+ 
+-        Simulator.debugger.addTrackItem(m,c);
++        Simulator.debugger.addTrackItem(r);
+         Simulator.debugger.setDelay(500);
+         Simulator.circuit.startCircuit();
+     }

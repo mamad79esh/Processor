@@ -1,0 +1,46 @@
+Index: src/simulator/Sample.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//Dedicated to Goli\r\n\r\npackage simulator;\r\n\r\nimport simulator.control.Simulator;\r\nimport simulator.gates.combinational.Not;\r\nimport simulator.gates.sequential.Clock;\r\n\r\nimport simulator.network.Link;\r\nimport simulator.wrapper.wrappers.*;\r\n\r\nimport java.util.List;\r\n\r\npublic class Sample {\r\n    public static void main(String[] args) {\r\n    \t\r\n        //sample circuit\r\n    \t\r\n    \t\r\n//      And a1 = new And(\"AND1\");\r\n//      a1.addInput(Simulator.trueLogic , Simulator.falseLogic);\r\n//      \r\n//      Or o1 = new Or(\"OR1\");\r\n//      o1.addInput(a1.getOutput(0) , Simulator.falseLogic);\r\n      \r\n      //HalfAdder ha1 = new HalfAdder(\"HALFADDER1\", \"2X2\" );\r\n      //ha1.addInput(Simulator.trueLogic , Simulator.trueLogic);\r\n  \t\r\n  \t//FullAdder fa1 = new FullAdder(\"FULLADDER1\", \"3X2\");\r\n  \t//fa1.addInput(Simulator.trueLogic , Simulator.falseLogic , Simulator.trueLogic);\r\n  \t\r\n  \t//Clock clock1 = new Clock(\"CLOCK1\", 1000) ;\r\n  \t//DFlipFlop d1 = new DFlipFlop(\"DF1\", clock1.getOutput(0) , Simulator.trueLogic) ;\r\n  \t\r\n//  \tLink[] inp = new Link[16];\r\n//  \tfor (int j = 0 ; j<5 ; j++)\r\n//  \t\tinp[j] = Simulator.trueLogic ;\r\n//  \tfor (int j = 5 ; j<16 ; j++)\r\n//  \t\tinp[j] = Simulator.falseLogic ;\r\n//  \t\t\r\n//  \tSignExtend se1 = new SignExtend(\"SIGNEX\", \"16X32\", inp);\r\n  \t\r\n  \t\r\n    //Multiplexer2x1 m1 = new Multiplexer2x1(\"MUX_2x1\",\"3X1\",Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic);\r\n//    Multiplexer4x1 m1 = new Multiplexer2x1(\"MUX_2x1\",\"6X1\",Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.falseLogic);\r\n//\r\n\r\n//    Multiplexer8x1 m1 = new Multiplexer8x1(\"MUX_8x1\",\"11x1\",Simulator.trueLogic,Simulator.falseLogic , Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.trueLogic,Simulator.falseLogic,Simulator.trueLogic,Simulator.trueLogic);\r\n\r\n//  \tLink[] inp = new Link[32];\r\n//  \tfor (int j=0 ; j<32 ; j++)\r\n//  \t\tinp[j] = Simulator.trueLogic ;\r\n//\r\n//  \tTwos_complement tc1 = new Twos_complement(\"TWO's\",\"32X32\",inp);\r\n    \t\r\n    \t\r\n    \t\r\n        Clock clock = new Clock(\"CLOCK\", 1000);\r\n//    \tClock c = new Clock(\"clk\", 1000);\r\n//    \tDFlipFlop d = new DFlipFlop(\"DFlipFlop\",\"2X2\",c.getOutput(0));\r\n//    \td.addInput(d.getOutput(1));\r\n        \r\n        \r\n    \t//assume that the first address of PC is (00000000) in hex\r\n    \tLink[] PCinput = new Link[78];\r\n    \tPCinput[0] = clock.getOutput(0) ;\r\n    \tfor (int j=1 ; j<33 ; j++)\r\n    \t\tPCinput[j] = Simulator.falseLogic ;        // first PC address\r\n    \tfor (int j=33 ; j<49 ; j++)\r\n    \t\tPCinput[j] = Simulator.falseLogic ;        // beq offset\r\n    \tfor (int j=49 ; j<75 ; j++)\r\n    \t    PCinput[j] = Simulator.falseLogic ;        // jmp offset\r\n    \t\r\n    \tPCinput[75] = Simulator.falseLogic ;          // zero flag\r\n    \tPCinput[76] = Simulator.falseLogic ;          // beq flag\r\n    \tPCinput[77] = Simulator.falseLogic ;          // jmp flag\r\n\r\n    \t\r\n    \tPC_update pcUpdate = new PC_update(\"PC_UPDATE\",\"78X32\",PCinput);\r\n    \t\r\n    \t\r\n    \t\r\n        Simulator.debugger.addTrackItem(pcUpdate);\r\n        Simulator.debugger.setDelay(200);\r\n        Simulator.circuit.startCircuit();\r\n\r\n    \t\r\n    \t\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/simulator/Sample.java	(revision 9bc634603341161497ad1e96f650d19854ff3e81)
++++ src/simulator/Sample.java	(date 1595653499545)
+@@ -62,21 +62,21 @@
+         
+         
+     	//assume that the first address of PC is (00000000) in hex
+-    	Link[] PCinput = new Link[78];
+-    	PCinput[0] = clock.getOutput(0) ;
+-    	for (int j=1 ; j<33 ; j++)
+-    		PCinput[j] = Simulator.falseLogic ;        // first PC address
+-    	for (int j=33 ; j<49 ; j++)
+-    		PCinput[j] = Simulator.falseLogic ;        // beq offset
+-    	for (int j=49 ; j<75 ; j++)
+-    	    PCinput[j] = Simulator.falseLogic ;        // jmp offset
+-    	
+-    	PCinput[75] = Simulator.falseLogic ;          // zero flag
+-    	PCinput[76] = Simulator.falseLogic ;          // beq flag
+-    	PCinput[77] = Simulator.falseLogic ;          // jmp flag
+-
+-    	
+-    	PC_update pcUpdate = new PC_update("PC_UPDATE","78X32",PCinput);
++//    	Link[] PCinput = new Link[78];
++//    	PCinput[0] = clock.getOutput(0) ;
++//    	for (int j=1 ; j<33 ; j++)
++//    		PCinput[j] = Simulator.falseLogic ;        // first PC address
++//    	for (int j=33 ; j<49 ; j++)
++//    		PCinput[j] = Simulator.falseLogic ;        // beq offset
++//    	for (int j=49 ; j<75 ; j++)
++//    	    PCinput[j] = Simulator.falseLogic ;        // jmp offset
++//
++//    	PCinput[75] = Simulator.falseLogic ;          // zero flag
++//    	PCinput[76] = Simulator.falseLogic ;          // beq flag
++//    	PCinput[77] = Simulator.falseLogic ;          // jmp flag
++//
++//
++//    	PC_update pcUpdate = new PC_update("PC_UPDATE","78X32",PCinput);
+     	
+     	
+     	

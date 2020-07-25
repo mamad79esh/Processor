@@ -11,7 +11,7 @@ public class Processor {
     public static void main(String[] args) {
         // Creating needed wrapper :
 
-        Clock clock = new Clock("Clock",1000);
+        Clock clock = new Clock("Clock",2000);
 
         PCUpdate pcUpdate = new PCUpdate("PCUpdate","78x32");
 
@@ -86,8 +86,8 @@ public class Processor {
 
         instrucions[1][0] = false;    instrucions[1][1] = true;
         instrucions[1][2] = false;     instrucions[1][3] = false;
-        instrucions[1][4] = true;    instrucions[1][5] = false;
-        instrucions[1][6] = false;   instrucions[1][7] = false;
+        instrucions[1][4] = false;    instrucions[1][5] = false;
+        instrucions[1][6] = true;   instrucions[1][7] = false;
 
         instrucions[2][0] = false;    instrucions[2][1] = false;
         instrucions[2][2] = false;     instrucions[2][3] = true;
@@ -206,7 +206,7 @@ public class Processor {
         }
 
         for (int i = 0 ; i < 32 ; i++){// write register data
-            registerFile.addInput(writeRegisterDataSelect[i].getOutput(0));
+            registerFile.addInput(writeRegisterData[i].getOutput(0));
         }
 
         //--------------------------------------------------------------------------------------------------------------
@@ -235,7 +235,7 @@ public class Processor {
             alu.addInput(aluControl.getOutput(i));
 
         for (int i = 0 ; i < 32 ; i++){// add first input from register file
-            alu.addInput(registerFile.getInput(i));
+            alu.addInput(registerFile.getOutput(i));
         }
 
         for (int i = 0 ; i < 32 ; i++){// add second input form mux
@@ -267,7 +267,7 @@ public class Processor {
 
 
         Simulator.debugger.addTrackItem(clock,dataMemory,registerFile,alu,instructionMemory,
-                pcUpdate,controlUnit);
+                pcUpdate,controlUnit,aluControl);
 
         Simulator.debugger.setDelay(500);
         Simulator.circuit.startCircuit();

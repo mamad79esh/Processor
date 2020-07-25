@@ -60,7 +60,7 @@ public class ALU extends Wrapper {
             i++;
         }
 
-        Twos_complement tws =new Twos_complement("tws","32X32",inp);
+        TwosComplement tws =new TwosComplement("tws","32X32",inp);
 
         Adder sub =new Adder("sub","64X33",
                 tws.getOutput(0),tws.getOutput(1),tws.getOutput(2),tws.getOutput(3),tws.getOutput(4),tws.getOutput(5),

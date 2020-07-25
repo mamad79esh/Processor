@@ -179,6 +179,12 @@ public class Processor {
         for(int i = 16 ; i < 32 ; i++)// add address to fetch instruction
             instructionMemory.addInput(pcUpdate.getOutput(i));
 
+        //--------------------------------------------------------------------------------------------------------------
+        // Connecting control unit
+        for (int i = 0 ; i < 6 ; i++){// add opcode to control unit
+            controlUnit.addInput(instructionMemory.getOutput(i));
+        }
+
 
         //--------------------------------------------------------------------------------------------------------------
         // Connecting register file input
@@ -203,11 +209,6 @@ public class Processor {
 
 
 
-        //--------------------------------------------------------------------------------------------------------------
-        // Connecting control unit
-        for (int i = 0 ; i < 6 ; i++){// add opcode to control unit
-            controlUnit.addInput(instructionMemory.getOutput(i));
-        }
 
         //--------------------------------------------------------------------------------------------------------------
         // Connecting alu control
@@ -278,7 +279,7 @@ public class Processor {
                 ,writeRegisterData[25],writeRegisterData[26],writeRegisterData[27],writeRegisterData[28],writeRegisterData[29]
                 ,writeRegisterData[30],writeRegisterData[31]);
 
-        Simulator.debugger.setDelay(2000);
+        Simulator.debugger.setDelay(500);
         Simulator.circuit.startCircuit();
     }
 }

@@ -54,7 +54,7 @@ public class ALU extends Wrapper {
         And carry=new And("carry",adder.getOutput(0),Simulator.trueLogic);
 
         Link[] inp = new Link[32];
-        int i=4;
+        int i=36;
         for (int j=0; j<32 ; j++){
             inp[j] = getInput(i) ;
             i++;
@@ -62,19 +62,18 @@ public class ALU extends Wrapper {
 
         TwosComplement tws =new TwosComplement("tws","32X32",inp);
 
-        Adder sub =new Adder("sub","64X33",
+        Adder sub =new Adder("sub","64X33", getInput(4),getInput(5),getInput(6),getInput(7),getInput(8),getInput(9),getInput(10),
+                getInput(11),getInput(12),getInput(13),getInput(14),getInput(15),getInput(16),getInput(17),
+                getInput(18),getInput(19),getInput(20),getInput(21),getInput(22),getInput(23),getInput(24),
+                getInput(25),getInput(26),getInput(27),getInput(28),getInput(29),getInput(30),getInput(31),
+                getInput(32),getInput(33),getInput(34),getInput(35),
                 tws.getOutput(0),tws.getOutput(1),tws.getOutput(2),tws.getOutput(3),tws.getOutput(4),tws.getOutput(5),
                 tws.getOutput(6),tws.getOutput(7),tws.getOutput(8),tws.getOutput(9),tws.getOutput(10),tws.getOutput(11),
                 tws.getOutput(12),tws.getOutput(13),tws.getOutput(14),tws.getOutput(15),tws.getOutput(16),tws.getOutput(17),
                 tws.getOutput(18),tws.getOutput(19),tws.getOutput(20),tws.getOutput(21),tws.getOutput(22),tws.getOutput(23),
                 tws.getOutput(24),tws.getOutput(25),tws.getOutput(26),tws.getOutput(27),tws.getOutput(28),tws.getOutput(29),
                 tws.getOutput(30),tws.getOutput(31)
-                ,getInput(36),getInput(37),getInput(38),
-                getInput(39),getInput(40),getInput(41),getInput(42),getInput(43),getInput(44),getInput(45),
-                getInput(46),getInput(47),getInput(48),getInput(49),getInput(50),getInput(51),getInput(52),
-                getInput(53),getInput(54),getInput(55),getInput(56),getInput(57),getInput(58),getInput(59),
-                getInput(60),getInput(61),getInput(62),getInput(63),getInput(64),getInput(65),getInput(66)
-                ,getInput(67));
+                );
 
         And and0= new And("and0",getInput(4),getInput(36),CAnd.getOutput(0));
         And and1= new And("and1",getInput(5),getInput(37),CAnd.getOutput(0));

@@ -11,7 +11,7 @@ import simulator.network.Node;
  *   out:
  *       0 -> 31 : data out */
 public class ByteMemory extends Node {
-    private Boolean[][] memory;
+    private Boolean [][] memory;
 
     public ByteMemory(String label, Link... links) {
         super(label, links);

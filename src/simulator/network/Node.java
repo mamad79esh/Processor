@@ -33,7 +33,7 @@ public abstract class Node implements Linkable{
 
     public abstract void evaluate();
 
-    public void addOutputLink(Boolean value) {
+    public void addOutputLink(boolean value) {
         Link link = new Link(value);
         link.setSource(this);
         addOutput(link);

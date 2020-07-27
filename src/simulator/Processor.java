@@ -3,15 +3,18 @@ package simulator;
 import simulator.control.Simulator;
 import simulator.gates.combinational.ByteMemory;
 import simulator.gates.combinational.Memory;
+import simulator.gates.sequential.BigClock;
 import simulator.gates.sequential.Clock;
 import simulator.network.Link;
 import simulator.wrapper.wrappers.*;
+
+import java.util.List;
 
 public class Processor {
     public static void main(String[] args) {
         // Creating needed wrapper :
 
-        Clock clock = new Clock("Clock",2000);
+        BigClock clock = new BigClock("Clock");
 
         PCUpdate pcUpdate = new PCUpdate("PCUpdate","78x32");
 
@@ -36,25 +39,16 @@ public class Processor {
         ALU alu = new ALU("ALU","68X33");
 
         ByteMemory dataMemory = new ByteMemory("DataMemory");
+        Boolean[][] data = new Boolean[65536][8];
+        for(int i=0 ; i<65536 ; i++)
+            for(int j=0 ; j<8 ; j++)
+                data[i][j] = true;
+
+        dataMemory.setMemory(data);
 
         Multiplexer2x1 []writeRegisterData = new Multiplexer2x1[32];
         for (int i = 0 ; i < 32 ; i++)
             writeRegisterData[i] = new Multiplexer2x1("WriteRegisterData_"+i,"3X1");
-
-//        Multiplexer2x1 []writeRegisterDataSelect = new Multiplexer2x1[32];
-//        for (int i = 0 ; i < 32 ; i++)
-//            writeRegisterDataSelect[i] = new Multiplexer2x1("WriteRegisterDataSelect_"+i,"3X1");
-//
-//
-//        DFlipFlop[] shift = new DFlipFlop[2];
-//        shift[0] = new DFlipFlop("SH0","2X2",clock.getOutput(0), Simulator.falseLogic);
-//        shift[1] = new DFlipFlop("SH1","2X2",clock.getOutput(0), shift[0].getOutput(0));
-//
-//
-//        for (int i=0 ; i<32 ; ++i)
-//            writeRegisterDataSelect[i].addInput(shift[1].getOutput(0),
-//                    writeRegisterData[i].getOutput(0),Simulator.falseLogic);
-
 
 
         //--------------------------------------------------------------------------------------------------------------
@@ -143,16 +137,40 @@ public class Processor {
         instrucions[3][6] = false;   instrucions[3][7] = false;
 
 
+
+//         add $0,$s1,$s2
+
+        instrucions[0][0] = false;    instrucions[0][1] = false;
+        instrucions[0][2] = false;    instrucions[0][3] = false;
+        instrucions[0][4] = false;    instrucions[0][5] = false;
+        instrucions[0][6] = true;     instrucions[0][7] = false;
+
+        instrucions[1][0] = false;    instrucions[1][1] = false;
+        instrucions[1][2] = true;     instrucions[1][3] = true;
+        instrucions[1][4] = false;    instrucions[1][5] = false;
+        instrucions[1][6] = true;   instrucions[1][7] = false;
+
+        instrucions[2][0] = false;    instrucions[2][1] = false;
+        instrucions[2][2] = false;     instrucions[2][3] = false;
+        instrucions[2][4] = false;    instrucions[2][5] = false;
+        instrucions[2][6] = false;   instrucions[2][7] = false;
+
+        instrucions[3][0] = false;    instrucions[3][1] = false;
+        instrucions[3][2] = true;     instrucions[3][3] = false;
+        instrucions[3][4] = false;    instrucions[3][5] = false;
+        instrucions[3][6] = false;   instrucions[3][7] = false;
+
+
         // sw  $t0,0($t1)
 
         instrucions[4][0] = true;     instrucions[4][1] = false;
         instrucions[4][2] = true;    instrucions[4][3] = false;
         instrucions[4][4] = true;     instrucions[4][5] = true;
-        instrucions[4][6] = false;    instrucions[4][7] = true;
+        instrucions[4][6] = false;    instrucions[4][7] = false;
 
         instrucions[5][0] = false;    instrucions[5][1] = false;
-        instrucions[5][2] = true;     instrucions[5][3] = false;
-        instrucions[5][4] = true;     instrucions[5][5] = false;
+        instrucions[5][2] = false;     instrucions[5][3] = false;
+        instrucions[5][4] = false;     instrucions[5][5] = false;
         instrucions[5][6] = false;    instrucions[5][7] = false;
 
         instrucions[6][0] = false;    instrucions[6][1] = false;
@@ -167,29 +185,29 @@ public class Processor {
 
 
 
-        // lw  $t0,0($t1)
-
-        instrucions[8][0] = true;     instrucions[8][1] = false;
-        instrucions[8][2] = false;    instrucions[8][3] = false;
-        instrucions[8][4] = true;     instrucions[8][5] = true;
-        instrucions[8][6] = false;    instrucions[8][7] = true;
-
-        instrucions[9][0] = false;    instrucions[9][1] = false;
-        instrucions[9][2] = true;     instrucions[9][3] = false;
-        instrucions[9][4] = true;     instrucions[9][5] = false;
-        instrucions[9][6] = false;    instrucions[9][7] = false;
-
-        instrucions[10][0] = false;    instrucions[10][1] = false;
-        instrucions[10][2] = false;    instrucions[10][3] = false;
-        instrucions[10][4] = false;    instrucions[10][5] = false;
-        instrucions[10][6] = false;    instrucions[10][7] = false;
-
-        instrucions[11][0] = false;    instrucions[11][1] = false;
-        instrucions[11][2] = false;    instrucions[11][3] = false;
-        instrucions[11][4] = false;    instrucions[11][5] = false;
-        instrucions[11][6] = false;    instrucions[11][7] = false;
+//        // lw  $t0,0($t1)
 //
-
+//        instrucions[8][0] = true;     instrucions[8][1] = false;
+//        instrucions[8][2] = false;    instrucions[8][3] = false;
+//        instrucions[8][4] = true;     instrucions[8][5] = true;
+//        instrucions[8][6] = false;    instrucions[8][7] = false;
+//
+//        instrucions[9][0] = false;    instrucions[9][1] = false;
+//        instrucions[9][2] = false;     instrucions[9][3] = false;
+//        instrucions[9][4] = true;     instrucions[9][5] = false;
+//        instrucions[9][6] = false;    instrucions[9][7] = false;
+//
+//        instrucions[10][0] = false;    instrucions[10][1] = false;
+//        instrucions[10][2] = false;    instrucions[10][3] = false;
+//        instrucions[10][4] = false;    instrucions[10][5] = false;
+//        instrucions[10][6] = false;    instrucions[10][7] = false;
+//
+//        instrucions[11][0] = false;    instrucions[11][1] = false;
+//        instrucions[11][2] = false;    instrucions[11][3] = false;
+//        instrucions[11][4] = false;    instrucions[11][5] = false;
+//        instrucions[11][6] = false;    instrucions[11][7] = false;
+////
+//
 
 
 
@@ -233,14 +251,9 @@ public class Processor {
         // Connecting instruction memory
         instructionMemory.addInput(Simulator.falseLogic);
 
-//        for(int i = 16 ; i < 32 ; i++)// add don't care data
-//            instructionMemory.addInput(Simulator.falseLogic);
 
         for(int i = 16 ; i < 32 ; i++)// add address to fetch instruction
             instructionMemory.addInput(pcUpdate.getOutput(i));
-
-//        for(int i = 0 ; i < 32 ; i++)// add address to fetch instruction
-//            instructionMemory.addInput(Simulator.falseLogic);
 
 
         //--------------------------------------------------------------------------------------------------------------
@@ -251,11 +264,6 @@ public class Processor {
 
 
         //--------------------------------------------------------------------------------------------------------------
-        // Connecting register file input
-        for (int i = 0 ; i < 5 ; i++) { // register file mux inputs
-            registerFileInput[i].addInput(controlUnit.getOutput(0));// selector(RegDest)
-            registerFileInput[i].addInput(instructionMemory.getOutput(11+i),instructionMemory.getOutput(16+i));// rs,rt
-        }
 
 
         //--------------------------------------------------------------------------------------------------------------
@@ -310,17 +318,26 @@ public class Processor {
         }
 
         //--------------------------------------------------------------------------------------------------------------
+        // Connecting register file input
+        for (int i = 0 ; i < 5 ; i++) { // register file mux inputs
+            registerFileInput[i].addInput(controlUnit.getOutput(0));// selector(RegDest)
+            registerFileInput[i].addInput(instructionMemory.getOutput(11+i),instructionMemory.getOutput(16+i));// rs,rt
+        }
+
         // Connecting data memory
         dataMemory.addInput(controlUnit.getOutput(5));// write flag
-        for (int i = 17 ; i < 33 ; i++){// add address
+        for (int i = 17 ; i < 33 ; ++i){// add address
             dataMemory.addInput(alu.getOutput(i));
+            //dataMemory.addInput(Simulator.falseLogic);
         }
-        for (int i = 0 ; i < 32 ; i++){// add data
+
+        for (int i = 0 ; i < 32 ; ++i){// add data
+
 
             dataMemory.addInput(registerFile.getOutput(32+i));
-           // dataMemory.addInput(Simulator.falseLogic);
 
         }
+
 
         //--------------------------------------------------------------------------------------------------------------
         // Connecting write back mux
@@ -337,16 +354,16 @@ public class Processor {
 
 
         Simulator.debugger.addTrackItem(clock,dataMemory,registerFile,alu,instructionMemory,
-                pcUpdate,controlUnit,aluControl,
-                writeRegisterData[0],writeRegisterData[1],writeRegisterData[2],writeRegisterData[3],writeRegisterData[4],
-                writeRegisterData[5],writeRegisterData[6],writeRegisterData[7],writeRegisterData[8],writeRegisterData[9],
-                writeRegisterData[10],writeRegisterData[11],writeRegisterData[12],writeRegisterData[13],writeRegisterData[14],
-                writeRegisterData[15],writeRegisterData[16],writeRegisterData[17],writeRegisterData[18],writeRegisterData[19],
-                writeRegisterData[20],writeRegisterData[21],writeRegisterData[22],writeRegisterData[23],writeRegisterData[24],
-                writeRegisterData[25],writeRegisterData[26],writeRegisterData[27],writeRegisterData[28],writeRegisterData[29],
-                writeRegisterData[30],writeRegisterData[31]);
+                pcUpdate,controlUnit,aluControl);
+//                writeRegisterData[0],writeRegisterData[1],writeRegisterData[2],writeRegisterData[3],writeRegisterData[4],
+//                writeRegisterData[5],writeRegisterData[6],writeRegisterData[7],writeRegisterData[8],writeRegisterData[9],
+//                writeRegisterData[10],writeRegisterData[11],writeRegisterData[12],writeRegisterData[13],writeRegisterData[14],
+//                writeRegisterData[15],writeRegisterData[16],writeRegisterData[17],writeRegisterData[18],writeRegisterData[19],
+//                writeRegisterData[20],writeRegisterData[21],writeRegisterData[22],writeRegisterData[23],writeRegisterData[24],
+//                writeRegisterData[25],writeRegisterData[26],writeRegisterData[27],writeRegisterData[28],writeRegisterData[29],
+//                writeRegisterData[30],writeRegisterData[31]);
 
-        Simulator.debugger.setDelay(500);
+        Simulator.debugger.setDelay(0);
         Simulator.circuit.startCircuit();
     }
 }

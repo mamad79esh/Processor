@@ -16,8 +16,10 @@ public class test {
         for (int i = 0 ; i < 16 ; i++)
             mem.addInput(Simulator.falseLogic);
 
-        for (int i = 0 ; i < 32 ; i++)
+        for (int i = 0 ; i < 31 ; i++)
             mem.addInput(Simulator.falseLogic);
+
+        mem.addInput(Simulator.trueLogic);
 
 
 

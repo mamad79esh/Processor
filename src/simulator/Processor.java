@@ -138,27 +138,6 @@ public class Processor {
 
 
 
-//         add $0,$s1,$s2
-
-        instrucions[0][0] = false;    instrucions[0][1] = false;
-        instrucions[0][2] = false;    instrucions[0][3] = false;
-        instrucions[0][4] = false;    instrucions[0][5] = false;
-        instrucions[0][6] = true;     instrucions[0][7] = false;
-
-        instrucions[1][0] = false;    instrucions[1][1] = false;
-        instrucions[1][2] = true;     instrucions[1][3] = true;
-        instrucions[1][4] = false;    instrucions[1][5] = false;
-        instrucions[1][6] = true;   instrucions[1][7] = false;
-
-        instrucions[2][0] = false;    instrucions[2][1] = false;
-        instrucions[2][2] = false;     instrucions[2][3] = false;
-        instrucions[2][4] = false;    instrucions[2][5] = false;
-        instrucions[2][6] = false;   instrucions[2][7] = false;
-
-        instrucions[3][0] = false;    instrucions[3][1] = false;
-        instrucions[3][2] = true;     instrucions[3][3] = false;
-        instrucions[3][4] = false;    instrucions[3][5] = false;
-        instrucions[3][6] = false;   instrucions[3][7] = false;
 
 
         // sw  $t0,0($t1)
@@ -170,7 +149,7 @@ public class Processor {
 
         instrucions[5][0] = false;    instrucions[5][1] = false;
         instrucions[5][2] = false;     instrucions[5][3] = false;
-        instrucions[5][4] = false;     instrucions[5][5] = false;
+        instrucions[5][4] = true;     instrucions[5][5] = false;
         instrucions[5][6] = false;    instrucions[5][7] = false;
 
         instrucions[6][0] = false;    instrucions[6][1] = false;
@@ -185,29 +164,29 @@ public class Processor {
 
 
 
-//        // lw  $t0,0($t1)
+        // lw  $t0,0($t1)
+
+        instrucions[8][0] = true;     instrucions[8][1] = false;
+        instrucions[8][2] = false;    instrucions[8][3] = false;
+        instrucions[8][4] = true;     instrucions[8][5] = true;
+        instrucions[8][6] = false;    instrucions[8][7] = false;
+
+        instrucions[9][0] = false;    instrucions[9][1] = false;
+        instrucions[9][2] = false;     instrucions[9][3] = false;
+        instrucions[9][4] = true;     instrucions[9][5] = false;
+        instrucions[9][6] = false;    instrucions[9][7] = false;
+
+        instrucions[10][0] = false;    instrucions[10][1] = false;
+        instrucions[10][2] = false;    instrucions[10][3] = false;
+        instrucions[10][4] = false;    instrucions[10][5] = false;
+        instrucions[10][6] = false;    instrucions[10][7] = false;
+
+        instrucions[11][0] = false;    instrucions[11][1] = false;
+        instrucions[11][2] = false;    instrucions[11][3] = false;
+        instrucions[11][4] = false;    instrucions[11][5] = false;
+        instrucions[11][6] = false;    instrucions[11][7] = false;
 //
-//        instrucions[8][0] = true;     instrucions[8][1] = false;
-//        instrucions[8][2] = false;    instrucions[8][3] = false;
-//        instrucions[8][4] = true;     instrucions[8][5] = true;
-//        instrucions[8][6] = false;    instrucions[8][7] = false;
-//
-//        instrucions[9][0] = false;    instrucions[9][1] = false;
-//        instrucions[9][2] = false;     instrucions[9][3] = false;
-//        instrucions[9][4] = true;     instrucions[9][5] = false;
-//        instrucions[9][6] = false;    instrucions[9][7] = false;
-//
-//        instrucions[10][0] = false;    instrucions[10][1] = false;
-//        instrucions[10][2] = false;    instrucions[10][3] = false;
-//        instrucions[10][4] = false;    instrucions[10][5] = false;
-//        instrucions[10][6] = false;    instrucions[10][7] = false;
-//
-//        instrucions[11][0] = false;    instrucions[11][1] = false;
-//        instrucions[11][2] = false;    instrucions[11][3] = false;
-//        instrucions[11][4] = false;    instrucions[11][5] = false;
-//        instrucions[11][6] = false;    instrucions[11][7] = false;
-////
-//
+
 
 
 
